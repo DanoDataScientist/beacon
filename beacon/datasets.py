@@ -1,4 +1,4 @@
-import io, csv, json
+import os, io, csv, json
 
 from access_points import get_scanner
 
@@ -7,13 +7,15 @@ def fetch_datasets(label='default place', size=1):
     y = []
     wifi_scanner = get_scanner()
     for index in range(int(size)):
-        print('scan ' + str(index) + ' access points')
+        print('scan ' + str(index+1) + ' access point')
         access_points = wifi_scanner.get_access_points()
         X.append({' '.join([ap.ssid, ap.bssid]): ap.quality for ap in access_points })
         y.append(label)
     return X, y
 
 def save_datasets(X, y, path='datasets/datasets.csv'):
+    dir_name = os.path.dirname(os.path.abspath(path))
+    if not os.path.exists(dir_name): os.mkdir(dir_name)
     csv_writer = csv.writer(
         io.open(path, 'a', encoding='utf-8'),
         delimiter='\t'

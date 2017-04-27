@@ -12,6 +12,7 @@ $ python beacon.py -h
 $ python beacon.py sampling -l 'living-room' -s 10
 $ python beacon.py sampling -l 'kitchen' -s 10
 $ python beacon.py sampling -l 'toilet' -s 10
+# $ python beacon.py training
 $ python beacon.py predict
 $ python beacon.py percentage
 $ python beacon.py labels
